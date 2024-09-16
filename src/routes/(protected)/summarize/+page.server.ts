@@ -6,6 +6,7 @@ import { zod } from 'sveltekit-superforms/adapters';
 import axios from 'axios';
 import ytdlp from 'yt-dlp-exec';
 import fs from 'fs';
+
 import { listMessages, createMessage, createRun, createThread, pollRunWithTimeout } from '$lib/server/openai.js';
 
 
@@ -49,7 +50,8 @@ export const actions = {
         subLang: 'en',      // Specify the subtitle language, e.g., 'en' for English
         skipDownload: true,
         printJson: true,
-        output: '123'
+        output: '123',
+        cookies: './cookies.txt'
       }) 
       
       // if (output.subtitles && output.subtitles.en) {
