@@ -12,7 +12,7 @@ const signInSchema = userSchema.pick({
 export const load = async (event) => {
 	const session = await event.locals.auth.validate();
 	console.log({session})
-	if (session) throw redirect(302, '/golfheaven/email-campaign');
+	if (session) throw redirect(302, '/summarize');
 	const form = await superValidate(zod(signInSchema));
 	return {
 		form
