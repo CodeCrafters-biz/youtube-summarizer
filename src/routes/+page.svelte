@@ -7,10 +7,10 @@
 </script>
 
 <svelte:head>
-	<title>Golfgenius</title>
+	<title>Youtube summarizer</title>
 	<meta
 		name="description"
-		content="Golfgenius"
+		content="Youtube summarizer"
 	/>
 </svelte:head>
 <div class="flex flex-col justify-center px-6 py-12 lg:px-8 mx-auto max-w-2xl">
