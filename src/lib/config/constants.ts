@@ -1,8 +1,8 @@
 import { dev } from '$app/environment';
-export const BASE_URL = dev ? 'http://localhost:5173' : 'https://youtube-summarize.codecrafters.biz';
+export const BASE_URL = dev ? 'http://localhost:5173' : 'https://youtube-summarizer.mypup.io';
 export const APP_NAME = 'Youtube summarize';
 export const CONTACT_EMAIL = 'alex@codecrafters.biz';
-export const DOMAIN = 'youtube-summarize.codecrafters.biz';
+export const DOMAIN = 'youtube-summarizer.mypup.io';
 /* WARNING!!! TERMS AND CONDITIONS AND PRIVACY POLICY 
 WERE CREATED BY CHATGPT AS AN EXAMPLE ONLY. 
 CONSULT A LAWYER AND DEVELOP YOUR OWN TERMS AND PRIVACY POLICY!!! */
