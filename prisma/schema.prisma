@@ -1,0 +1,133 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_CONNECTION_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ProjectType {
+  id        String      @id @default(uuid()) // Using UUID for unique ID generation
+  name_fi   String
+  name_en   String
+  reference Reference[]
+}
+
+model Company {
+  id             String    @id @default(uuid()) // Using UUID for unique ID generation
+  name           String
+  email_gpt_name String
+  users          AuthUser[] @relation("Companies")
+  authUserId     String?
+}
+
+model Client {
+  id        String      @id @default(uuid()) // Using UUID for unique ID generation
+  name_fi   String
+  name_en   String
+  reference Reference[]
+}
+
+model BusinessLine {
+  id        String      @id @default(uuid()) // Using UUID for unique ID generation
+  name_fi   String
+  name_en   String
+  reference Reference[]
+}
+
+model Country {
+  id        String      @id @default(uuid()) // Using UUID for unique ID generation
+  name_fi   String
+  name_en   String
+  numeric   String
+  alpha2    String
+  alpha3    String
+  reference Reference[]
+}
+
+model Person {
+  id              String      @id @default(uuid()) // Using UUID for unique ID generation
+  firstName       String
+  lastName        String
+  references      Reference[] @relation("PeopleReferences")
+  managedProjects Reference[] @relation("ProjectManagers")
+}
+
+model SavedSearch {
+  id             String   @id @default(uuid()) // Using UUID for unique ID generation
+  searchCriteria Json
+  userId         String
+  user           AuthUser @relation(fields: [userId], references: [id])
+}
+
+model Reference {
+  id              String         @id @default(uuid()) // Using UUID for unique ID generation
+  country         Country[]
+  businessLine    BusinessLine[]
+  projectType     ProjectType[]
+  projectManagers Person[]       @relation("ProjectManagers")
+  people          Person[]       @relation("PeopleReferences")
+  clients         Client[]
+  description_fi  String?
+  description_en  String?
+  projectNumber   String?
+  projectValue    Float?
+  language        String?
+  clientContact   String?
+  comments        String?
+  user            AuthUser       @relation(fields: [createdBy], references: [id])
+  start_date      DateTime?
+  end_date        DateTime?
+  createdBy       String
+}
+
+model AuthUser {
+  id           String        @id @default(uuid()) // Using UUID for unique ID generation
+  email        String        @unique
+  firstName    String
+  lastName     String
+  companies    Company[]     @relation("Companies")
+  role         Role          @default(USER)
+  verified     Boolean       @default(false)
+  receiveEmail Boolean       @default(true)
+  token        String?       @unique
+  createdAt    DateTime      @default(now()) @db.Timestamp(6)
+  updatedAt    DateTime      @updatedAt @db.Timestamp(6)
+  auth_session AuthSession[]
+  auth_key     AuthKey[]
+  savedSearch  SavedSearch[]
+  references   Reference[]
+
+  @@map("auth_user")
+}
+
+model AuthSession {
+  id             String   @id @default(uuid()) // Using UUID for unique ID generation
+  user_id        String
+  active_expires BigInt
+  idle_expires   BigInt
+  auth_user      AuthUser @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+  @@index([user_id])
+  @@map("auth_session")
+}
+
+model AuthKey {
+  id              String   @id @default(uuid()) // Using UUID for unique ID generation
+  hashed_password String?
+  user_id         String
+  auth_user       AuthUser @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+  @@index([user_id])
+  @@map("auth_key")
+}
+
+enum Role {
+  USER
+  MANAGER
+  ADMIN
+}

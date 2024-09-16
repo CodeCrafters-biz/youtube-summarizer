@@ -1,0 +1,40 @@
+{
+  "signin": "Kirjaudu sisään",
+  "signinProblem": "Kirjautumisongelma",
+  "signup": "Rekisteröidy",
+  "signout": "Kirjaudu ulos",
+  "forgotPassword": "Unohtuiko salasana?",
+  "contact": "Ota yhteyttä",
+  "privacy": "Yksityisyys",
+  "terms": "Käyttöehdot",
+  "email": "Sähköpostiosoite",
+  "password": "Salasana",
+  "firstName": "Etunimi",
+  "lastName": "Sukunimi",
+  "profile": "Profiili",
+  "home": "Koti",
+  "protected": "Suojattu",
+  "createReference": {
+    "descriptionRequired": "Description is required fi"
+  },
+  "auth": {
+    "password": {
+      "reset": {
+        "success": {
+          "emailSent": "Salasanan palautusviesti lähetetty",
+          "checkEmail": "Tarkista sähköpostisi saadaksesi linkin salasanan palauttamiseen. Jos viestiä ei näy muutaman minuutin kuluessa, tarkista roskapostikansiosi."
+        },
+        "resetProblem": "Salasanan palautusongelma",
+        "sendResetEmail": "Lähetä salasanan palautusviesti"
+      },
+      "update": {
+        "success": {
+          "updated": "Salasana päivitetty onnistuneesti"
+        },
+        "changePassword": "Vaihda salasanasi",
+        "passwordProblem": "Salasanan vaihto-ongelma",
+        "updatePassword": "Päivitä salasana"
+      }
+    }
+  }
+}

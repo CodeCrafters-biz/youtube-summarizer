@@ -1,0 +1,25 @@
+make a js function that will recieve as argument string. It should parse name from it, first + last name or just first name if its consist of one word
+
+possible examples and results:
+
+input:
+Tiina, Terhi, Pirkko, Anna-Katri
+output:
+[{firstName: 'Tiina', lastName: ''}, {firstName: 'Terhi', lastName: ''}, {firstName: 'Pirkko', lastName: ''}, {firstName: 'Anna-Katri', lastName: ''}]
+
+input:
+Taskila Eero / Sillanpää Jarmo
+output:
+[{firstName: 'Taskila', lastName: 'Eero'}, {firstName: 'Sillanpää', lastName: 'Jarmo'}]
+
+input:
+Mika (maasto, rapo), Sari (maasto)
+output:
+[{firstName: 'Mika', lastName: ''}, {firstName: 'Sari', lastName: ''}]
+
+input:
+Lehtinen Lotta-Maria
+output:
+[{firstName: 'Mika', lastName: 'Lotta-Maria'}]
+
+
