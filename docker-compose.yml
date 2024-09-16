@@ -14,7 +14,7 @@ services:
   #     - ./letsencrypt:/etc/letsencrypt
   #   networks:
   #     mypupio: {}
-  golfgeniuss:
+  ytsum:
     restart: always
     build: .
     env_file:
